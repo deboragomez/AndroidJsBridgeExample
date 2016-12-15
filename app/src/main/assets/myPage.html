@@ -1,18 +1,25 @@
 <html>
 
-<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />
+<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')"/>
 
-<input type="Button" value="Update basket" onClick="updateBasketInfo('{\'count\': 2}')" />
+<input type="Button" value="Update basket" onClick="updateBasketInfo('{\'count\': 2}')"/>
 
 <script type="text/javascript">
 
-    function showAndroidToast(toast) {
-        Android.showToast(toast);
-    }
+function showAndroidToast(toast) {
+    Android.showToast(toast);
+}
 
-    function updateBasketInfo(basketJson) {
-        Android.updateBasket(basketJson);
-    }
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+function updateBasketInfo(basketJson) {
+    var cookieValue = getCookie("App_Type");
+    Android.updateBasket(basketJson);
+}
 
 </script>
 <html>

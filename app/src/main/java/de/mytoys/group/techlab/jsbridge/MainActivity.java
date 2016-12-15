@@ -4,12 +4,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Toast;
 
 /**
  * Class that presents the information on the screen.
+ *
  * @author Debora Gomez
  */
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //WebView Object
         WebView wv = (WebView) findViewById(R.id.webview);
+        //Injects cookie to specify the platform.
+        final CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.setCookie(".mytoys.de", "App_Type=Android; path=/");
         //Enable Javascript
         wv.getSettings().setJavaScriptEnabled(true);
         //Inject WebAppInterface methods into Web page by having Interface name 'Android'
